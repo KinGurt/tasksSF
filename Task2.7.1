@@ -1,0 +1,33 @@
+public class Main {
+    public static void main(String[] args) {
+        char ch1 = 'h';
+        char ch2 = 'i';
+        char ch3 = 'b';
+
+        System.out.println(decode(ch1) + " " + decode(ch2) + " " + decode(ch3));
+
+    }
+    public static String decode(char ch) {
+        String s;
+        switch (ch) {
+            case 'h':
+                s = "Hello";
+                break;
+            case 'i':
+                s = "I can decode!";
+                break;
+            case 'm':
+                s = "I can decode!";
+                break;
+            case 'k':
+                s = "I can decode!";
+                break;
+            case 'b':
+                s = "Bye!";
+                break;
+            default:
+                s = "I don't know these symbols :(";
+        }
+        return s;
+    }
+}
