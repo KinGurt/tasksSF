@@ -1,0 +1,22 @@
+// Напишите программу, в которой пользователя просят ввести имя и пароль.
+// Пароль должен быть ограничен по размеру от 8 до 15 символов.
+// В случае ввода неверного пароля программа должна запрашивать пароль снова и выводить на экран причину ошибки.
+// В случае, если пароль введен верно, программа должна выводить имя пользователя и его пароль. Удачи, и да прибудет с вами сила!
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите имя: ");
+        String login = scanner.nextLine();
+        System.out.print("Введите пароль: ");
+        String password = scanner.nextLine();
+
+        while (password.length() > 15 || password.length() < 8) {
+            System.out.print("Пароль должен быть ограничен по размеру от 8 до 15 символов.\nВведите пароль снова: ");
+            password = scanner.nextLine();
+        }
+        System.out.printf("Имя: %s\nПароль: %s", login, password);
+    }
+}
