@@ -10,7 +10,14 @@ public class Main {
         if (s1.equalsIgnoreCase(s2)) {
             return "Выберите другое имя пользователя";
         } else {
-            return "Отличное имя!\n" + "Ваше имя имеет длину " + s1.split(" ")[0].length() + " символов\n" + "Ваше полное имя имеет длину " + (s1.length()-1) + " символов";
+            String[] array = s1.split(" ");
+            int sum = 0;
+
+            for (String s : array) {
+                sum += s.length();
+            }
+
+            return "Отличное имя!\n" + "Ваше имя имеет длину " + array[0].length() + " символов\n" + "Ваше полное имя имеет длину " + sum + " символов";
         }
     }
 }
