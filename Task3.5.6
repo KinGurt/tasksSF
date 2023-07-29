@@ -1,0 +1,31 @@
+/*
+Используя методы для строк и массивов, напишите свой метод для переворачивания слова наоборот.
+Он должен работать только для одного слова.
+Пример:
+абра кадабра
+Введите корректное имя!
+кадабра
+Слово наоборот - арбадак
+ */
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String word = scanner.nextLine();
+        while (!wordCheck(word)) {
+            System.out.println("Введите слово корректно!");
+            word = scanner.nextLine();
+        }
+        System.out.println(replaceWord(word));
+    }
+
+    public static boolean wordCheck(String word) {
+        return !word.contains(" ");
+    }
+
+    public static String replaceWord(String word) {
+        return new StringBuilder(word).reverse().toString();
+    }
+}
