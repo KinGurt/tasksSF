@@ -1,0 +1,42 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        boolean isCorrectName = false;
+        while (!isCorrectName) {
+            String name = scanner.nextLine(); //Считывает строку из System.in
+            isCorrectName = checkName(name);
+            if (!isCorrectName) {
+                System.out.println("Введите корректное имя!");
+            } else {
+                System.out.println(formatName(name));
+            }
+        }
+    }
+
+    private static boolean checkName(String name) {
+        return name.trim().split(" ").length == 3;
+    }
+
+    private static String formatName(String name) {
+        String result = "";
+        String[] str = name.split(" ");
+        for (int i = 0; i < str.length; i++) {
+            for (int j = 0; j < str[i].length(); j++) {
+                if (j == 0) {
+                    result += String.valueOf(str[i].charAt(j)).toUpperCase();
+                } else {
+                    result +=  str[i].charAt(j);
+                }
+            }
+            result += " ";
+        }
+        return result;
+    }
+
+    private static void sortByLength(String[] words) {
+        Arrays.sort(words);
+    }
+}
