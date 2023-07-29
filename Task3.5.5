@@ -1,0 +1,26 @@
+/*
+Напишите метод, в котором будет массив, содержащий числа с плавающей точкой.
+К примеру: {1.3, 3.2, 5.1, 4.7}
+Создайте package с названием «modul3».
+Создайте в пакете class Main.
+Создайте в методе цикл, который будет выводить в консоль все элементы массива.
+Напишите к нему цикл, способный считать сумму всех элементов, чтобы в консоль выводилось: "Сумма чисел массива: ".
+Найдите в своем массиве наибольший элемент и выведите его в консоль: "Наибольший элемент: ".
+ */
+
+public class Main {
+    public static void main(String[] args) {
+        double[] array = {1.3, 3.2, 5.1, 4.7};
+        doubleNumbers(array);
+    }
+    public static void doubleNumbers(double[] numbers) {
+        double sum = 0, max = Double.MIN_VALUE;
+        for (double number:numbers) {
+            System.out.println(number);
+            sum += number;
+            max = Math.max(number, max);
+        }
+        System.out.println("Сумма чисел массива: " + sum);
+        System.out.println("Наибольший элемент: " + max);
+    }
+}
