@@ -1,0 +1,108 @@
+/*
+Напишите программу, которая содержит информацию о названиях предметов, например на складе.
+У пользователя есть возможность проверить наличие товара, добавить новый товар или удалить товар
+с помощью ключевых слов «Проверить», «Добавить» или «Удалить» соответственно.
+В случае проверки программа выдает «Есть» или «Нет», в зависимости от наличия предмета.
+В случае добавления программа выдает «Успешно добавлено» или «Предмет уже есть»,
+когда товара не было или был на складе соответственно.
+Ограничение по размеру склада: 12 предметов (не очень большой склад, верно).
+В случае добавления 13-го предмета программа выдает ошибку:
+«Невозможно добавить предмет. Место на складе кончилось».
+В случае попытки удалить предмет с пустого склада или удалить несуществующий предмет
+программа выдает ошибку: «Удаление предмета невозможно. Предмета нет на складе».
+Также можно добавить вывод всех предметов со склада на текущий момент.
+ */
+
+import java.util.Locale;
+import java.util.Scanner;
+
+public class Main {
+    static  int n = 12;
+    static String[] products = new String[n];
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String action;
+        String product;
+        do {
+            System.out.println("Выберите действие: ");
+            action = scanner.nextLine();
+            switch (action.toLowerCase(Locale.ROOT)) {
+                case "проверить":
+                    System.out.println("Введите название предмета: ");
+                    product = scanner.nextLine();
+                    checkProduct(product);
+                    break;
+                case "добавить":
+                    System.out.println("Введите название предмета: ");
+                    product = scanner.nextLine();
+                    addProduct(product);
+                    break;
+                case "удалить":
+                    System.out.println("Введите название предмета: ");
+                    product = scanner.nextLine();
+                    deleteProduct(product);
+                    break;
+                case "вывести":
+                    printProducts();
+                    break;
+                default:
+                    System.out.println("Неправильный ввод");
+            }
+        } while (!action.toLowerCase(Locale.ROOT).equals("выход"));
+    }
+
+    public static boolean availabilityProduct(String product) {
+        for (String p : products) {
+            if (p != null && p.equals(product)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void checkProduct(String product) {
+        if (availabilityProduct(product)) {
+            System.out.println("Есть");
+        } else {
+            System.out.println("Нет");
+        }
+    }
+
+    public static void addProduct(String product) {
+        if (availabilityProduct(product)) {
+            System.out.println("Предмет уже есть");
+        } else {
+            for (int i = 0; i < products.length; i++) {
+                if (products[i] == null) {
+                    products[i] = product;
+                    System.out.println("Успешно добавлено");
+                    return;
+                }
+            }
+            System.out.println("Невозможно добавить предмет. Место на складе кончилось");
+        }
+    }
+
+    public static void deleteProduct(String product) {
+        if (availabilityProduct(product)) {
+            for (int i = 0; i < products.length; i++) {
+                if (products[i].equals(product)) {
+                    products[i] = null;
+                    System.out.println("Успешно удалено");
+                    break;
+                }
+            }
+        } else {
+            System.out.println("Удаление предмета невозможно. Предмета нет на складе");
+        }
+    }
+
+    public static void printProducts() {
+        for (String p : products) {
+            if (p != null) {
+                System.out.println(p);
+            }
+        }
+    }
+}
