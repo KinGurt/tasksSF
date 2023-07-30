@@ -13,6 +13,7 @@
 Также можно добавить вывод всех предметов со склада на текущий момент.
  */
 
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -51,12 +52,11 @@ public class Main {
     }
 
     public static boolean availabilityProduct(String product) {
-        for (String p : products) {
-            if (p != null && p.equals(product)) {
-                return true;
-            }
+        if (Arrays.binarySearch(products, product) < 0) {
+            return false;
+        } else {
+            return true;
         }
-        return false;
     }
 
     public static void checkProduct(String product) {
