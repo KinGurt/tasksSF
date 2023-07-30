@@ -46,8 +46,6 @@ public class Main {
                 case "вывести":
                     printProducts();
                     break;
-                default:
-                    System.out.println("Неправильный ввод");
             }
         } while (!action.toLowerCase(Locale.ROOT).equals("выход"));
     }
