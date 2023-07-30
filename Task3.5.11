@@ -1,0 +1,21 @@
+/*
+Сидоров Иван захотел учиться без двоек, но тратить больше времени на учебу желания нет.
+И тогда он решил подправить код электронного дневника так, чтобы все выставленные учителем
+двойки превращались в пятёрки. Помогите ему.
+ */
+
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] journal = {3, 2, 4, 3, 2, 3, 2, 4, 2, 2};
+
+        for (int i = 0; i < journal.length; i++) {
+            if (journal[i] == 2) {
+                journal[i] = 5;
+            }
+        }
+
+        System.out.println(Arrays.toString(journal));
+    }
+}
