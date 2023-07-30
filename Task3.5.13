@@ -1,0 +1,47 @@
+/*
+Имитировать раздачу карт для игры в покер. Программа получает число n, задаваемое с консоли пользователем,
+и раздает карты на n игроков (по 5 карт каждому) из отсортированной колоды.
+Разделяйте пять карт, выданных каждому игроку, пустой строкой.
+*/
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        String[] suits = {"Пик", "Бубен", "Черв", "Треф"};
+        String[] rank = {"2", "3", "4", "5", "6", "7", "8", "9", "10",
+                "Валет", "Королева", "Король", "Туз"};
+        int sumCart = suits.length*rank.length;
+        int playerCart = 5;
+        int qCart = 0;
+
+        Scanner scanner = new Scanner(System.in);
+        int n;
+        do {
+            System.out.printf("Введите количество игроков (до %d): ", (sumCart / 5));
+            n = scanner.nextInt();
+        } while (n > (sumCart / 4));
+
+
+        String[] carts = new String[sumCart];
+
+        for (int i = 0; i < suits.length; i++) {
+            for (int j = 0; j < rank.length; j++) {
+                carts[i*rank.length + j] = rank[j] + suits[i];
+            }
+        }
+        
+        for (int i = 0; i < n; i++) {
+            System.out.printf("У %d игрока карты: ", (i+1));
+            for (int j = 0; j < playerCart; j++) {
+                int numCart = (int) (Math.random() * (sumCart - qCart) + qCart);
+                System.out.print(carts[numCart] + " ");
+                carts[numCart] = "";
+                Arrays.sort(carts);
+                qCart++;
+            }
+            System.out.println();
+        }
+    }
+}
