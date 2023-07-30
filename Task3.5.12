@@ -1,0 +1,13 @@
+/*
+Написать программу, которая после ввода адреса электронной почты возвращала бы домен введенной электронной почты.
+ */
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String email = scanner.nextLine();
+        System.out.println(email.substring(email.indexOf("@")+1));
+    }
+}
