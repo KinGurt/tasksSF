@@ -1,0 +1,52 @@
+/*
+Имеется текст:
+Жили-были старик со старухой.
+Вот и говорит старик старухе:
+— Поди-ка, старуха, по коробу поскреби, по сусеку помети, не наскребешь ли муки на колобок.
+Создать программу, которая будет выводить меню, где можно выбрать один из трёх вариантов:
+1. Удалить пробелы.
+2. Сделать все заглавными или строчными.
+3. Посчитать количество символов.
+Сделать программу, которая не будет закрываться после первой же операции.
+Программу отключалась бы, например при вводе 0.
+0. Выход из программы
+ */
+
+
+import java.util.Locale;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        String text = "Жили-были старик со старухой.\n" +
+                "Вот и говорит старик старухе:\n" +
+                "— Поди-ка, старуха, по коробу поскреби, по сусеку помети, не наскребешь ли муки на колобок.";
+        int answer;
+        Scanner scanner = new Scanner(System.in);
+        do {
+            System.out.print("1. Удалить пробелы.\n" +
+                    "2. Сделать все заглавными или строчными.\n" +
+                    "3. Посчитать количество символов.\n" +
+                    "0. Выход из программы.\n" +
+                    "Выберите вариант ответа: ");
+            answer = scanner.nextInt();
+            switch (answer) {
+                case 1:
+                    text = text.replaceAll(" ", "");
+                    System.out.println(text);
+                    break;
+                case 2:
+                    if (text.charAt(0) == text.toUpperCase(Locale.ROOT).charAt(0)) {
+                        text = text.toLowerCase(Locale.ROOT);
+                    } else {
+                        text = text.toUpperCase(Locale.ROOT);
+                    }
+                    System.out.println(text);
+                    break;
+                case 3:
+                    System.out.println(text.length());
+                    break;
+            }
+        } while (answer != 0);
+    }
+}
