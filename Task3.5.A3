@@ -1,0 +1,32 @@
+import java.util.Arrays;
+
+public class Main {
+   public static short size = 3;
+   public static int[][] ints = new int[size][];
+
+   public static void main(String[] args) {
+       // code here...
+       int k = 3;
+       ints[0] = new int[]{1};
+       ints[1] = new int[]{1, 1};
+       
+       int[] array;
+       
+       for (int i = 2; i < size; i++) {
+           array = new int[k];
+           for (int j = 0; j < k; j++) {
+               if (j == 0 || j == k-1) {
+                   array[j] = 1;
+               } else {
+                   array[j] = ints[i-1][j-1] + ints[i-1][j];
+               }
+           }
+           ints[i] = array;
+           k++;
+       }
+
+       for (int i = 0; i < size; i++) {
+           System.out.println(Arrays.toString(ints[i]));
+       }
+   }
+}
