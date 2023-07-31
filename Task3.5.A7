@@ -4,27 +4,33 @@ public class Main {
     public static String encrypt(String text, int shift) {
         // code here...
         String result = "";
+        String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String lower = upper.toLowerCase();
+        
+        while (shift < 0) {
+           shift += upper.length();
+       }
         
         for (int i = 0; i < text.length(); i++) {
-            result += "" + (char) (text.charAt(i) + 5);
-        }
+           if (text.charAt(i) >= 'A' && text.charAt(i) <= 'Z') {
+               result += upper.charAt((upper.indexOf(text.charAt(i)) + shift) % upper.length());
+           } else if (text.charAt(i) >= 'a' && text.charAt(i) <= 'z') {
+               result += lower.charAt((lower.indexOf(text.charAt(i)) + shift) % lower.length());
+           } else {
+               result += text.charAt(i);
+           }
+       }
         
         return result;
     }
 
     public static String decrypt(String text, int shift) {
         // code here...
-        String result = "";
-        
-        for (int i = 0; i < text.length(); i++) {
-            result += "" + (char) (text.charAt(i) - 5);
-        }
-        
-        return result;
+        return encrypt(text, -shift);
     }
 
     public static void main(String[] args) {
         System.out.println(encrypt(text, 5));
-        System.out.println(decrypt(encrypt(text, 5), 5));
+        System.out.println(decrypt(text, 5));
     }
 }
