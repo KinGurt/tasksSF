@@ -1,0 +1,20 @@
+import java.util.Arrays;
+
+public class Main {
+   public static int[] numbers = new int[30];
+
+   public static void main(String[] args) {
+       // code here...
+       int number1 = 1;
+       int number2 = 1;
+       numbers[0] = number1;
+       numbers[1] = number2;
+       
+       for (int i = 2; i < numbers.length; i++) {
+           numbers[i] = number1 + number2;
+           number1 = number2;
+           number2 = numbers[i];
+       }
+       System.out.println(Arrays.toString(numbers));
+   }
+}
